@@ -13,9 +13,13 @@ struct Sheet_Demo: View {
             }
         }
         .sheet(isPresented: $isShowing) {
+            // 彈窗由下往上彈到視窗1/3
             Text("Detail")
                 .presentationDetents([.medium, .fraction(0.33)])
                 .presentationDragIndicator(.visible)
+                // 拉桿可見
+//                .presentationDragIndicator(.hidden)
+                    // 拉桿隱藏
         }
     }
 }
