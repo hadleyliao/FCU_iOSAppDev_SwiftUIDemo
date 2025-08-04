@@ -5,12 +5,17 @@ struct SimpleAnimation: View {
     @State private var isPresented = false
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
-            .foregroundStyle(.blue)
-            .frame(width: flag ? 100 : 50, height: 50)
+            .foregroundStyle(.blue)  // 設定矩形為藍色
+            .frame(width: flag ? 100 : 50, height: 50)  // 根據 flag 狀態動態調整寬度；高度固定為 50
             .onTapGesture {
-                withAnimation {
-                    flag.toggle()
+                
+                // 預設沒有動畫
+                // 但這裡有使用 withAnimation 包裝狀態變更以產生動畫效果
+                withAnimation(.linear(duration: 2)) {
+                    flag.toggle()  // 切換矩形寬度狀態
                 } completion: {
+                    // 動畫完成後的回調函數
+                    // 切換文字顯示狀態
                     isPresented.toggle()
                 }
             }
@@ -33,7 +38,8 @@ struct ImplicitAnimation: View {
             .frame(width: flag ? 100 : 50, height: 50)
             .opacity(flag ? 1 : 0.5)
             // Implicit Animation
-            .animation(.default, value: flag)
+//            .animation(.default, value: flag)
+            .animation(.spring(duration: 2), value: flag)
             .onTapGesture {
                 flag.toggle()
             }
