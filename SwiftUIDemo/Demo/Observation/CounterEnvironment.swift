@@ -52,5 +52,5 @@ struct CounterEnvironment: View {
 #Preview {
     CounterEnvironment()
         .font(.largeTitle)
-        .environment(CounterModel())
+//        .environment(CounterModel()) // 這邊註解，preview 會顯示 Counter: nil
 }
