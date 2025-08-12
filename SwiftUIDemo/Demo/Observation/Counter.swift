@@ -48,6 +48,7 @@ struct CounterView: View {
 
         ModelCounter(model: model)
             .onAppear(perform: onAppear)
+            // 代表這個子 View 一出現在螢幕上，就會自動呼叫 onAppear() 方法。
     }
 }
 
